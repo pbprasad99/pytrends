@@ -76,6 +76,10 @@ class TrendReq(object):
         """
         s = requests.session()
         s.headers.update({'accept-language': self.hl})
+        s.headers.update({'cache-control': 'no-cache'})
+        s.headers.update({'pragma': 'no-cache'})
+        s.headers.update({'referer': 'https://trends.google.com/trends/explore'})
+        s.headers.update({'user-agent': 'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_12_6) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/60.0.3112.113 Safari/537.36'})
         if self.proxies != '':
             s.proxies.update(self.proxies)
         if method == TrendReq.POST_METHOD:
